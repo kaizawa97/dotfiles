@@ -19,5 +19,12 @@ function install () {
 
 echo "[Basic]"
 install "vimrc" "${HOME}/.vimrc"
+#ssh setup
+if [[ $# -eq 1 ]]; then
+	SH_SSH_KEYS=${DIR}/apply-githubkeys.sh
+	chmod +x ${SH_SSH_KEYS}
+	./apply-githubkeys.sh $1
+fi
+
 cd ${HOME}
 vim
